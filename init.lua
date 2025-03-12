@@ -104,4 +104,32 @@ require('lazy').setup({
       {"<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
     },
   },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'williamboman/mason.nvim', opts = {} },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+      { 'j-hui/fidget.nvim', opts = {} },
+
+      'folke/lazydev.nvim',
+    },
+  },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+    },
+  },
+  {
+    'lewis6991/gitsigns.nvim',
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        
+      },
+    },
+  },
 })
