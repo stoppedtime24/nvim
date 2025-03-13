@@ -73,7 +73,9 @@ require('lazy').setup({
   {
     'tpope/vim-sleuth',        
   },
- {
+
+  -- For the theme
+  {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority  = 1000,
@@ -82,6 +84,8 @@ require('lazy').setup({
       vim.cmd.colorscheme "catppuccin"
     end
   },
+
+  -- File explorer
   {
     'nvim-tree/nvim-tree.lua',
     dependencies = {
@@ -103,6 +107,47 @@ require('lazy').setup({
     keys = {
       {"<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
     },
+  },
+  
+  -- Adds autopairs to (), {}, [], etc... 
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true
+  },
+  -- Shortcut to adds comments  
+  {
+    'numToStr/Comment.nvim',
+    opts = {},
+    keys = {
+      { 'gcc', mode = 'n', desc = 'Toggle line comment'},
+      { 'gc', mode = {'n', 'v'}, desc = 'Toggle line/block comment'},
+    },
+  },
+
+  -- Fuzzy finder
+  {
+    'nvim-telescope/telescope.nvim',
+    event = 'VimEnter',
+    branch = '0.1.x',
+    depedencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+
+        build = 'make',
+
+        cond = function()
+          return vim.fm.executable 'make' == 1
+        end,
+      },
+      { 'nvim-telescope/telescope-ui-select.nvim'},
+
+      {'nvim-tree/nvim-web-devicons', enabled = true},
+    },
+    keys = { 
+      { "<leader>T", "<cmd>Telescope<CR>", desc = "Toggle Telescope" }
+    }, 
   },
 })
 
