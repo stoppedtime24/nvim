@@ -149,5 +149,13 @@ require('lazy').setup({
       { "<leader>T", "<cmd>Telescope<CR>", desc = "Toggle Telescope" }
     }, 
   },
+
+  -- Add git related signs to gutter, as well as utilities for mananging changes
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function()
+    	require('gitsigns').setup()
+  end,
+  },
 })
 
