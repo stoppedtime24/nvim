@@ -55,13 +55,11 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-<<<<<<< HEAD
 -- Enable catppuccin plugin
 -- vim.cmd.colorscheme "catppuccin"
-=======
+
 -- Adding keymap to ShowkeysToggle
 vim.keymap.set('n', '<leader>skt', '<cmd>ShowkeysToggle<CR>')
->>>>>>> master
 
 -- lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -75,10 +73,7 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-<<<<<<< HEAD
-=======
   checker = { enabled = false },
->>>>>>> master
   {
     'tpope/vim-sleuth',        
   },
@@ -134,7 +129,6 @@ require('lazy').setup({
     },
   },
 
-<<<<<<< HEAD
   -- Fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
@@ -160,8 +154,6 @@ require('lazy').setup({
     }, 
   },
 
-=======
->>>>>>> master
   -- Add git related signs to gutter, as well as utilities for mananging changes
   {
     'lewis6991/gitsigns.nvim',
@@ -169,8 +161,6 @@ require('lazy').setup({
     	require('gitsigns').setup()
   end,
   },
-<<<<<<< HEAD
-=======
 
   {
     'nvzone/showkeys',
@@ -407,6 +397,5 @@ require('lazy').setup({
       })
     end,
   },
->>>>>>> master
 })
 
