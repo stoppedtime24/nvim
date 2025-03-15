@@ -77,7 +77,20 @@ require('lazy').setup({
   {
     'tpope/vim-sleuth',        
   },
-
+  {
+    'folke/which-key.nvim',
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+    {
+      "<leader>?",
+      function()
+        require("which-key").show({ global = false })
+      end,
+      desc = "Buffer Local Keymaps (which-key)",
+      },
+    },
+  },
   -- For the theme
   {
     'catppuccin/nvim',
@@ -114,10 +127,13 @@ require('lazy').setup({
       },
       filters = {
         dotfiles = false,
-      },
+      }, 
     },
     keys = {
       {"<leader>e", "<cmd>NvimTreeToggle<CR>", desc = "Toggle NvimTree" },
+    },
+    git = {
+      enable = true,
     },
   },
   
@@ -135,31 +151,6 @@ require('lazy').setup({
       { 'gcc', mode = 'n', desc = 'Toggle line comment'},
       { 'gc', mode = {'n', 'v'}, desc = 'Toggle line/block comment'},
     },
-  },
-
-  -- Fuzzy finder
-  {
-    'nvim-telescope/telescope.nvim',
-    event = 'VimEnter',
-    branch = '0.1.x',
-    depedencies = {
-      'nvim-lua/plenary.nvim',
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-
-        build = 'make',
-
-        cond = function()
-          return vim.fm.executable 'make' == 1
-        end,
-      },
-      { 'nvim-telescope/telescope-ui-select.nvim'},
-
-      {'nvim-tree/nvim-web-devicons', enabled = true},
-    },
-    keys = { 
-      { "<leader>T", "<cmd>Telescope<CR>", desc = "Toggle Telescope" }
-    }, 
   },
 
   -- Add git related signs to gutter, as well as utilities for mananging changes
