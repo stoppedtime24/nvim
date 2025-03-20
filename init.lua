@@ -55,9 +55,6 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Enable catppuccin plugin
--- vim.cmd.colorscheme "catppuccin"
-
 -- Adding keymap to ShowkeysToggle
 vim.keymap.set('n', '<leader>skt', '<cmd>ShowkeysToggle<CR>')
 
