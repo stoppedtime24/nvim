@@ -159,7 +159,7 @@ require('lazy').setup({
   },
 
   {
-    'nvzone/showkeys',
+    'nvzone/showkeys', 
     cmd =  "ShowkeysToggle",
     opts = {
       position = "top-center",
@@ -184,6 +184,8 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
       { 'nvim-tree/nvim-web-devicons', enabled = true },
+      -- {'BurntSushi/ripgrep'},
+      -- {'sharkdp/fd'}
     },
     config = function()
       require('telescope').setup {
@@ -205,15 +207,7 @@ require('lazy').setup({
       { "<leader>t", "<cmd>Telescope<CR>", desc = "Toggle Telescope" }
     }, 
   },
-
-  -- Add git related signs to gutter, as well as utilities for managing changes
-  {
-    'lewis6991/gitsigns.nvim',
-    config = function()
-    	require('gitsigns').setup()
-    end,
-  },
-  
+ 
   -- TreeSitter for better syntax highlighting and code understanding
   {
     'nvim-treesitter/nvim-treesitter',
@@ -244,22 +238,6 @@ require('lazy').setup({
     end,
   },
 
-    -- LSP Support
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs and related tools to stdpath
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-      
-      -- Useful status updates for LSP
-      { 'j-hui/fidget.nvim', opts = {} },
-      
-      -- Additional lua configuration, makes nvim stuff amazing!
-      { 'folke/lazydev.nvim' },
-    },
-  },
-  
   -- Autocompletion
   {
     'hrsh7th/nvim-cmp',
@@ -328,39 +306,27 @@ require('lazy').setup({
     end,
   },
   
-  -- Mason setup with ensured installations
+  -- Mason and LSP setup (consolidated)
   {
     'williamboman/mason.nvim',
+    dependencies = {
+      'williamboman/mason-lspconfig.nvim',
+      'neovim/nvim-lspconfig',
+      { 'j-hui/fidget.nvim', opts = {} },
+      { 'folke/lazydev.nvim' },
+    },
     config = function()
-      require('mason').setup()
-    end,
-  },
-  
-  {
-    'williamboman/mason-lspconfig.nvim',
-    config = function()
-      require('mason-lspconfig').setup {
-        -- List of servers for mason to install
-        ensure_installed = {
-          'pyright',       -- Python language server
-          'clangd',        -- C/C++ language server
-          -- Add other language servers here as needed
-          -- Examples:
-          -- 'rust_analyzer', -- Rust
-          -- 'gopls',         -- Go
-          -- 'tsserver',      -- TypeScript/JavaScript
-        },
-        -- auto-install configured servers (with lspconfig)
-        automatic_installation = true,
-      }
-      
-      -- Setup lazydev for better Lua development (must be set up before lspconfig)
+      -- Setup lazydev first
       require('lazydev').setup()
       
+      -- Setup Mason
+      require('mason').setup()
+ 
+      -- Setup lspconfig
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       
-      -- Setup language servers
+      -- Configure language servers
       lspconfig.pyright.setup {
         capabilities = capabilities,
       }
@@ -376,7 +342,7 @@ require('lazy').setup({
           -- Enable completion triggered by <c-x><c-o>
           vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
           
-          -- Buffer local mappings.
+          -- Buffer local mappings
           local opts = { buffer = ev.buf }
           vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
           vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
