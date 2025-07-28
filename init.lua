@@ -58,6 +58,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Adding keymap to ShowkeysToggle
 vim.keymap.set('n', '<leader>skt', '<cmd>ShowkeysToggle<CR>')
 
+-- Disables arrow keys in normal mode
+vim.keymap.set('n', '<Left>', '<Nop>')
+vim.keymap.set('n', '<Up>', '<Nop>')
+vim.keymap.set('n', '<Right>', '<Nop>')
+vim.keymap.set('n', '<Down>', '<Nop>')
+
 -- lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
