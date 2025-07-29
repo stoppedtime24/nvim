@@ -58,11 +58,15 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Adding keymap to ShowkeysToggle
 vim.keymap.set('n', '<leader>skt', '<cmd>ShowkeysToggle<CR>')
 
--- Disables arrow keys in normal mode
-vim.keymap.set('n', '<Left>', '<Nop>')
-vim.keymap.set('n', '<Up>', '<Nop>')
-vim.keymap.set('n', '<Right>', '<Nop>')
-vim.keymap.set('n', '<Down>', '<Nop>')
+-- Disables arrow keys in normal mode, use for window navigation instead
+vim.keymap.set('n', '<Left>', '<C-W>h')
+vim.keymap.set('n', '<Up>', '<C-W>k')
+vim.keymap.set('n', '<Right>', '<C-W>l')
+vim.keymap.set('n', '<Down>', '<C-W>j')
+
+-- Used to create new windows (vertical and horizontal)
+vim.keymap.set('n', '<leader>nvw', '<C-W>s')
+vim.keymap.set('n', '<leader>nhw', '<C-W>v')
 
 -- lazy plugin manager
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -213,7 +217,7 @@ require('lazy').setup({
       { "<leader>t", "<cmd>Telescope<CR>", desc = "Toggle Telescope" }
     }, 
   },
- 
+
   -- TreeSitter for better syntax highlighting and code understanding
   {
     'nvim-treesitter/nvim-treesitter',
@@ -310,8 +314,8 @@ require('lazy').setup({
         },
       }
     end,
-  },
-  
+  }, 
+
   -- Mason and LSP setup (consolidated)
   {
     'williamboman/mason.nvim',
@@ -365,5 +369,6 @@ require('lazy').setup({
       })
     end,
   },
+
 })
 
