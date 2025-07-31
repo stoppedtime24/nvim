@@ -150,15 +150,12 @@ require('lazy').setup({
     event = "InsertEnter",
     config = true
   },
+  
   -- Shortcut to adds comments  
   {
     'numToStr/Comment.nvim',
-    opts = {},
-    keys = {
-      { 'gcc', mode = 'n', desc = 'Toggle line comment'},
-      { 'gc', mode = {'n', 'v'}, desc = 'Toggle line/block comment'},
-    },
-  },
+    opts = {}, 
+  },  
 
   -- Add git related signs to gutter, as well as utilities for mananging changes
   {
@@ -194,8 +191,6 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
       { 'nvim-tree/nvim-web-devicons', enabled = true },
-      -- {'BurntSushi/ripgrep'},
-      -- {'sharkdp/fd'}
     },
     config = function()
       require('telescope').setup {
