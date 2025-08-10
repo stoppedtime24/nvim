@@ -98,8 +98,23 @@ require('lazy').setup({
       },
     },
   },
-  -- For the theme
+
+  -- For the themes 
   {
+    'sainnhe/everforest',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.everforest_enable_italic = true
+
+      vim.cmd.colorscheme('everforest')
+    end
+  },
+  
+  -- 
+  --[[  {
     'catppuccin/nvim',
     name = 'catppuccin',
     priority  = 1000,
@@ -107,13 +122,17 @@ require('lazy').setup({
       require("catppuccin").setup()
       vim.cmd.colorscheme "catppuccin"
     end
-  },
+  }, ]]
 
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons', opt = true },
     config = function()
-      require('lualine').setup {}
+      require('lualine').setup {
+        options = {
+          theme = 'everforest'
+        }
+      }
       end,
   },
 
