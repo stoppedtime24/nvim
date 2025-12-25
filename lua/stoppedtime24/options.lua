@@ -16,7 +16,7 @@ vim.opt.mouse = "a"
 
 -- Search
 vim.opt.ignorecase = true
-vim.opt.hlsearch = true
+vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
 -- Highlight current line

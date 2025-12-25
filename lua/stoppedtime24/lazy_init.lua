@@ -12,6 +12,5 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    spec = "stoppedtime24.plugins",
-    change_detection = { notify = false }
+  { import = "stoppedtime24.plugins" }, { import = "stoppedtime24.plugins.lsp"},
 })
