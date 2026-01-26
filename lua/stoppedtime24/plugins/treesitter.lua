@@ -4,7 +4,6 @@ return {
   event = { "VeryLazy" },
   build = ":TSUpdate",
   main = "nvim-treesitter.configs",
---  cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
   opts_extend = { "ensure_installed" },
   ---@alias lazyvim.TSFeat { enable?: boolean, disable?: string[] }
   ---@class lazyvim.TSConfig: TSConfig
