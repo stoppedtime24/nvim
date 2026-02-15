@@ -3,6 +3,7 @@ return {
   tag = "v4.9.1", 
   opts = {
     options = {
+      numbers = "ordinal",
       -- stylua: ignore
       close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore
@@ -20,6 +21,7 @@ return {
           filetype = "snacks_layout_box",
         },
       },
+      color_icons = true;
     },
   }
 }
