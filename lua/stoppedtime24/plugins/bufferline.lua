@@ -1,9 +1,14 @@
 return {
   "akinsho/bufferline.nvim",
   tag = "v4.9.1", 
+  event = "VeryLazy",
+  keys = {
+    { "[b", "<cmd>BufferLineCyclePrev<cr>", desc = "Prev Buffer" },
+    { "]b", "<cmd>BufferLineCycleNext<cr>", desc = "Next Buffer" },
+  },
   opts = {
     options = {
-      numbers = "ordinal",
+      -- numbers = "ordinal",
       -- stylua: ignore
       close_command = function(n) Snacks.bufdelete(n) end,
       -- stylua: ignore
